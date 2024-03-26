@@ -1,0 +1,176 @@
+
+
+LayWidget:
+
+<LayWidget>:
+
+    title_widget: title
+    container_widget: container
+    tag_widget: tag
+    min_price_widget: min_price
+    max_price_widget: max_price
+
+    MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1
+            pos_hint: {"center_x": .5, "center_y": .95}
+
+            MDTopAppBarLeadingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "menu"
+                    on_release: nav_drawer.set_state("toggle")
+
+            MDTopAppBarTitle:
+                text: "Бридня Даниил Вадимович"
+                pos_hint: {"center_x": .5}
+
+        MDNavigationLayout:
+            MDNavigationDrawer:
+                id: nav_drawer
+                radius: 0, dp(16), dp(16), 0
+
+                MDNavigationDrawerMenu:
+
+                    MDNavigationDrawerLabel:
+                        text: "Поиск товаров"
+
+                    #MDNavigationDrawerItem:
+
+                        #MDNavigationDrawerItemLeadingIcon:
+                            #icon: "subtitles-outline"
+
+
+                        #MDNavigationDrawerItemText:
+                           # text: "Поиск по названию"
+
+
+                    MDTextField:
+                        id: title
+                        mode: "outlined"
+
+
+                        MDTextFieldHintText:
+                            text: "Поиск по названию"
+                        MDTextFieldLeadingIcon:
+                            icon: "magnify"
+
+                    MDNavigationDrawerDivider:
+
+                    MDButton:
+                        style: "tonal"
+                        theme_width: "Custom"
+                        height: "56dp"
+                        size_hint_x: .5
+                        on_release:
+                            root.search_goods(),
+                            nav_drawer.set_state("toggle")
+
+                        MDButtonIcon:
+                            x: text.x - (self.width + dp(10))
+                            icon: "cloud-search"
+
+                        MDButtonText:
+                            id: text
+                            text: "Найти товар"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+
+                    MDNavigationDrawerDivider:
+
+                    MDTextField:
+                        id: tag
+                        mode: "outlined"
+                        MDTextFieldHintText:
+                            text: "Поиск по тэгам"
+                            MDTextFieldLeadingIcon:
+                                icon: "magnify"
+
+                    MDNavigationDrawerDivider:
+
+                    MDButton:
+                        style: "tonal"
+                        theme_width: "Custom"
+                        height: "56dp"
+                        size_hint_x: .5
+                        on_release:
+                            root.search_goods(),
+                            nav_drawer.set_state("toggle")
+
+                        MDButtonIcon:
+                            x: text.x - (self.width + dp(10))
+                            icon: "cloud-search"
+
+                        MDButtonText:
+                            id: text
+                            text: "Найти товар"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+
+                    MDNavigationDrawerDivider:
+
+                    MDTextField:
+                        id: min_price
+                        mode: "outlined"
+                        size_hint_x: None
+                        width: "120dp"
+                        #pos_hint: {"center_x": .5, "center_y": .5}
+                        MDTextFieldHintText:
+                            text: "Min price"
+                    MDNavigationDrawerDivider:
+
+                    MDTextField:
+                        id: max_price
+                        mode: "outlined"
+                        size_hint_x: None
+                        width: "120dp"
+                        #pos_hint: {"center_x": .9, "center_y": .5}
+                        MDTextFieldHintText:
+                            text: "Max price"
+
+                    MDNavigationDrawerDivider:
+
+                    MDButton:
+                        style: "tonal"
+                        theme_width: "Custom"
+                        height: "56dp"
+                        size_hint_x: .5
+                        on_release:
+                            root.search_goods(),
+                            nav_drawer.set_state("toggle")
+
+                        MDButtonIcon:
+                            x: text.x - (self.width + dp(10))
+                            icon: "cloud-search"
+
+                        MDButtonText:
+                            id: text
+                            text: "Найти товар"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            pos_hint: {"center_x": .7, "center_y": .4}
+            MDScrollView:
+                #md_bg_color: self.theme_cls.primaryColor
+                MDList:
+                    #orientation: "vertical"
+                    id: container
+
+
+        MDBoxLayout:
+            id: box
+            adaptive_size: True
+            spacing: "32dp"
+            pos_hint: {"center_x": 0.93, "center_y": .2}
+            #on_release: app.click_me()
+
+
+
+        #MDBottomAppBar:
+           # md_bg_color: self.theme_cls.backgroundColor
+        MDFabBottomAppBarButton:
+            icon: "minus"
+            on_release: root.clear_list()
+
+
